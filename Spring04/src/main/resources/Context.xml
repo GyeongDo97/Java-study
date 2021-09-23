@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		
+			
+	<!-- @Bean
+	Fuel makeFuel() {
+		return new Water();
+	} -->
+	<!-- makeFuel함수를 만들고 리턴값은 Water객체이다. -->
+	<bean id ="makeWater" class="Pack.Water"/>
+	<bean id ="makeGas" class="Pack.Gas"/>
+		
+		
+		
+		
+	<!-- @Bean
+	Airplane airplane() {
+		return new Airplane(makeFuel());
+	} -->
+	<bean id="airplane" class = "Pack.Airplane">
+		<constructor-arg ref="makeWater"/>
+		<!-- ref를 이용하여 생성자의 인수를 전달한다. -->			
+	</bean>
+
+	<bean id="ship" class = "Pack.Ship">
+		<constructor-arg ref="makeGas"/>
+		<!-- ref를 이용하여 생성자의 인수를 전달한다. -->			
+	</bean>
+
+	<bean id="car" class = "Pack.Car">
+		<constructor-arg ref="makeWater"/>
+		<!-- ref를 이용하여 생성자의 인수를 전달한다. -->			
+	</bean>
+		
+</beans>
