@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mapper">
+	<!-- mapper는 namespace가 필요한데 외부에서 충돌이 발생하는것을 방지하기 위해 사용 -->
+	
+	<select id="test01" resultType="int">
+		SELECT age from table01
+	</select>
+
+	<!-- int test02(String name){}-->
+	<insert id="test02" parameterType="String">
+		INSERT INTO table01(name) values (#{name})
+	</insert>
+	
+	<delete id="test03" parameterType="String">
+		DELETE FROM table01 WHERE name = #{name}
+	</delete>
+
+	<!-- 호랑이를 사자로 변경 -->
+	<update id="test04" parameterType="String">
+		UPDATE table01 SET name = "4321" WHERE name = #{name}
+	</update>
+	
+	
+	
+	
+	<insert id="test05" parameterType="Pack.Person">
+		INSERT INTO table01(name, age) values (#{name}, #{age})
+	</insert>
+	
+	<delete id="test06" parameterType="Pack.Person">
+		DELETE FROM table01 WHERE age = #{age}
+	</delete>
+	
+	<update id="test07" parameterType="Pack.Person">
+		UPDATE table01 SET age = 20 WHERE name = #{name}
+	</update>
+	
+	<select id="test08" resultType="Pack.Person">
+		SELECT * from table01
+	</select>
+	
+</mapper>
